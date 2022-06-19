@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "fallingsun",
+    "name": "FallingSun",
+    "description": "Some useful client commands",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "Novau233"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
