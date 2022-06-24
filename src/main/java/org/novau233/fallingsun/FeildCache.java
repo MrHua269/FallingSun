@@ -1,4 +1,4 @@
-package org.novau233.fallingsun.mixins;
+package org.novau233.fallingsun;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

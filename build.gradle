@@ -74,5 +74,6 @@ jar {
             'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
             'MixinConfigs': 'mixins.fallingsun.json',
             'FMLCorePluginContainsFMLMod': 'true',
+            'FMLCorePlugin': 'org.novau233.fallingsun.Loader'
     )
 }
