@@ -10,7 +10,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import org.apache.logging.log4j.LogManager;
 import org.novau233.fallingsun.function.Function;
-
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -94,6 +93,16 @@ public class FunCrash implements Function {
     @Override
     public String getHead() {
         return commandHead;
+    }
+
+    @Override
+    public boolean enabled() {
+        return this.enabled.get();
+    }
+
+    @Override
+    public void onDisable() {
+        this.enabled.set(false);
     }
 
     private static class ServerCrasherTask extends RecursiveAction {

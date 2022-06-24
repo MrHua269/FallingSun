@@ -12,5 +12,6 @@ public class FunctionManager {
         functions.add(new FunNoFall());
         functions.add(new FunSpammer());
         functions.add(new FunFly());
+        functions.add(new FunProxiesConnection());
     }
 }

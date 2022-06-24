@@ -1,17 +1,23 @@
 buildscript {
     repositories {
-        mavenCentral()
+        maven {
+            name = 'sponge'
+            url = 'https://repo.spongepowered.org/repository/maven-public/'
+        }
         maven {
             name = "forge"
             url = "https://files.minecraftforge.net/maven"
         }
+        mavenCentral()
     }
     dependencies {
         classpath "net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT"
+        classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
     }
 }
 
 apply plugin: "net.minecraftforge.gradle.forge"
+apply plugin: 'org.spongepowered.mixin'
 
 group = 'org.novau233'
 version = '1.11.0'
@@ -35,6 +41,13 @@ repositories {
 }
 
 dependencies {
+    compile 'org.spongepowered:mixin:0.8'
+}
+
+sourceSets {
+    main {
+        ext.refMap = "mixins.fallingsun.refmap.json"
+    }
 }
 
 processResources {
@@ -54,4 +67,12 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude "mcmod.info"
     }
+}
+
+jar {
+    manifest.attributes(
+            'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
+            'MixinConfigs': 'mixins.fallingsun.json',
+            'FMLCorePluginContainsFMLMod': 'true',
+    )
 }
