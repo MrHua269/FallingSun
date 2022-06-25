@@ -14,7 +14,7 @@ public class Loader implements IFMLLoadingPlugin {
     private static final Logger LOGGER = LogManager.getLogger();
 
     public Loader() {
-        Loader.LOGGER.info("\n\nLoading mixins by FallingSun");
+        Loader.LOGGER.info("Loading mixins by FallingSun");
         MixinBootstrap.init();
         Mixins.addConfiguration("mixins.fallingsun.json");
         MixinEnvironment.getDefaultEnvironment().setObfuscationContext("searge");
