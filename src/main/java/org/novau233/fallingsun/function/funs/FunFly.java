@@ -37,14 +37,4 @@ public class FunFly implements Function {
     public String getHead() {
         return "flight";
     }
-
-    @Override
-    public boolean enabled() {
-        return enable.get();
-    }
-
-    @Override
-    public void onDisable() {
-        this.enable.set(false);
-    }
 }

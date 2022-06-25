@@ -3,6 +3,7 @@ package org.novau233.fallingsun.function.funs;
 import net.minecraft.util.text.TextComponentString;
 import org.novau233.fallingsun.Util;
 import org.novau233.fallingsun.function.Function;
+
 import java.io.*;
 import java.util.Random;
 import java.util.Timer;
@@ -11,7 +12,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class FunSpammer implements Function {
     private Mode mode = Mode.File;
-    private final AtomicBoolean enable = new AtomicBoolean(false);
+    private AtomicBoolean enable = new AtomicBoolean(false);
     private Timer timer = new Timer();
     private String content;
     private TimerTask task = new TimerTask() {
@@ -34,7 +35,10 @@ public class FunSpammer implements Function {
     };
 
     @Override
-    public void onClientTick() {}
+    public void onClientTick() {
+    }
+
+    private boolean posted = false;
 
     @Override
     public void onCommandExecute(String[] arg) {
@@ -93,16 +97,6 @@ public class FunSpammer implements Function {
     @Override
     public String getHead() {
         return "spammer";
-    }
-
-    @Override
-    public boolean enabled() {
-        return this.enable.get();
-    }
-
-    @Override
-    public void onDisable() {
-        this.enable.set(false);
     }
 
     private enum Mode {

@@ -7,6 +7,4 @@ public interface Function {
     public void onClientTick();
     public void onCommandExecute(String[] arg);
     public String getHead();
-    public boolean enabled();
-    public void onDisable();
 }
