@@ -12,15 +12,15 @@ public class FunProxiesConnection implements Function {
 
     @Override
     public void onCommandExecute(String[] arg) {
-        if (!FeildCache.enableProxyConnection.get()){
+        if (FeildCache.enableProxyConnection.get()){
             mc.player.sendMessage(new TextComponentString("Proxied connection enabled!Current proxies:"+FeildCache.proxies.size()));
-            FeildCache.enableProxyConnection.set(true);
+            FeildCache.enableProxyConnection.set(false);
             if (FeildCache.proxies.size() - 1 <= FeildCache.currentIndex.get()){
                 AsyncCommandHandler.COMMAND_EXECUTOR.execute(FeildCache::initProxies);
             }
         }else {
             mc.player.sendMessage(new TextComponentString("Proxied connection disabled!"));
-            FeildCache.enableProxyConnection.set(false);
+            FeildCache.enableProxyConnection.set(true);
         }
     }
 

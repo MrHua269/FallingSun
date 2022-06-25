@@ -60,17 +60,8 @@ public abstract class MixinNetWorkManager {
 
                 p_initChannel_1_.pipeline().addLast("timeout", new ReadTimeoutHandler(30)).addLast("splitter", new NettyVarint21FrameDecoder()).addLast("decoder", new NettyPacketDecoder(EnumPacketDirection.CLIENTBOUND)).addLast("prepender", new NettyVarint21FrameEncoder()).addLast("encoder", new NettyPacketEncoder(EnumPacketDirection.SERVERBOUND)).addLast("packet_handler", networkmanager);
                 if (FeildCache.enableProxyConnection.get()){
-                    if (FeildCache.proxies.size() <= FeildCache.currentIndex.get()){
-                        FeildCache.proxies.clear();
-                        FeildCache.initProxies();
-                    }
                     LogManager.getLogger().info("Proxy added!");
                     p_initChannel_1_.pipeline().addFirst("proxy", new HttpProxyHandler(FeildCache.proxies.get(FeildCache.currentIndex.getAndIncrement()).address()));
-                    if (Thread.currentThread().getName().startsWith("Server Pinger")){
-                        if (FeildCache.currentIndex.get()!=0){
-                            FeildCache.currentIndex.getAndDecrement();
-                        }
-                    }
                 }
             }
         }).channel(oclass).connect(address, serverPort).syncUninterruptibly();
