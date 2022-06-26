@@ -9,9 +9,11 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.apache.logging.log4j.LogManager;
 import org.lwjgl.opengl.Display;
 import org.novau233.fallingsun.function.Function;
 import org.novau233.fallingsun.function.FunctionManager;
+import org.novau233.fallingsun.mixins.FeildCache;
 
 @Mod(
         modid = FallingSun.MOD_ID,
@@ -38,6 +40,10 @@ public class FallingSun {
     public void init(FMLInitializationEvent event) {
         Display.setTitle("FallingSun v1.11.0 dev by Novau233");
         FunctionManager.init();
+        AsyncCommandHandler.COMMAND_EXECUTOR.execute(()->{
+            LogManager.getLogger().info("Getting proxies...");
+            FeildCache.initProxies();
+        });
     }
 
     @Mod.EventHandler
@@ -52,7 +58,7 @@ public class FallingSun {
             if (event1 instanceof ClientChatEvent){
                 ClientChatEvent event = (ClientChatEvent) event1;
                 String content = event.getMessage();
-                if (content.startsWith("#")){
+                if (content.startsWith("@")){
                     event.setCanceled(true);
                     AsyncCommandHandler.handleCommand(content);
                 }

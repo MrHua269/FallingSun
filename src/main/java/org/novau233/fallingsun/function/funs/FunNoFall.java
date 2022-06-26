@@ -36,4 +36,14 @@ public class FunNoFall implements Function {
     public String getHead() {
         return "nofall";
     }
+
+    @Override
+    public boolean enabled() {
+        return this.enable;
+    }
+
+    @Override
+    public void onDisable() {
+        this.enable = false;
+    }
 }

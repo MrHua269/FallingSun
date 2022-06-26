@@ -1,0 +1,10 @@
+{
+  "minVersion": "1.12.2",
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "org.novau233.fallingsun.mixins",
+  "refmap": "mixins.fallingsun.refmap.json",
+  "mixins": [
+    "MixinNetWorkManager"
+  ]
+}
