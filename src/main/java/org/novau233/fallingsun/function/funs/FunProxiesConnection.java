@@ -3,7 +3,7 @@ package org.novau233.fallingsun.function.funs;
 import net.minecraft.util.text.TextComponentString;
 import org.novau233.fallingsun.AsyncCommandHandler;
 import org.novau233.fallingsun.function.Function;
-import org.novau233.fallingsun.mixins.FeildCache;
+import org.novau233.fallingsun.FeildCache;
 
 public class FunProxiesConnection implements Function {
 

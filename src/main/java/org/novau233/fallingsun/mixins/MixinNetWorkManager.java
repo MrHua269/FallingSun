@@ -7,14 +7,13 @@ import io.netty.channel.epoll.EpollSocketChannel;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.proxy.HttpProxyHandler;
-import io.netty.handler.proxy.Socks4ProxyHandler;
-import io.netty.handler.proxy.Socks5ProxyHandler;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import net.minecraft.network.*;
 import net.minecraft.util.LazyLoadBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.LogManager;
+import org.novau233.fallingsun.FeildCache;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import java.net.InetAddress;
@@ -32,7 +31,7 @@ public abstract class MixinNetWorkManager {
     @Overwrite
     public static NetworkManager createNetworkManagerAndConnect(InetAddress address, int serverPort, boolean useNativeTransport)
     {
-        LogManager.getLogger().info("Enable proxy:"+FeildCache.enableProxyConnection.get());
+        LogManager.getLogger().info("Enable proxy:"+ FeildCache.enableProxyConnection.get());
         if (address instanceof java.net.Inet6Address) System.setProperty("java.net.preferIPv4Stack", "false");
         final NetworkManager networkmanager = new NetworkManager(EnumPacketDirection.CLIENTBOUND);
         Class <? extends SocketChannel> oclass;

@@ -13,7 +13,6 @@ import org.apache.logging.log4j.LogManager;
 import org.lwjgl.opengl.Display;
 import org.novau233.fallingsun.function.Function;
 import org.novau233.fallingsun.function.FunctionManager;
-import org.novau233.fallingsun.mixins.FeildCache;
 
 @Mod(
         modid = FallingSun.MOD_ID,
